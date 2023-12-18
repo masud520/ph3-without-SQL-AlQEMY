@@ -1,19 +1,23 @@
-
 class Restaurant:
     def __init__(self, name):
+        # Initialize Restaurant with a name and an empty list to hold reviews
         self.name = name
         self.reviews_list = []
 
     def restaurant_name(self):
+        # Return the name of the restaurant
         return self.name
     
     def reviews(self):
+        # Return the list of reviews for this restaurant
         return self.reviews_list
     
     def customers(self):
+        # Return a list of unique customers who reviewed this restaurant
         return list(set(review.customer for review in self.reviews_list))
 
     def average_star_rating(self):
+        # Calculate the average star rating for the restaurant
         total_ratings = sum(review.rating for review in self.reviews_list)
         total_reviews = len(self.reviews_list) 
         if total_reviews == 0:
@@ -26,33 +30,41 @@ class Customer:
     all_customers = []
 
     def __init__(self, name, family_name):
+        # Initialize Customer with a name, family name, and an empty list to hold reviews
         self.name = name
         self.family_name = family_name
         self.reviews_list = []
         Customer.all_customers.append(self)
     
     def given_name(self):
+        # Return the given name of the customer
         return self.name
     
     def last_name(self):
+        # Return the family name of the customer
         return self.family_name
 
     def full_name(self):
+        # Return the full name of the customer
         return f"{self.name} {self.family_name}"
     
     def restaurants(self):
-        return (list(review.restaurant for review in self.reviews_list))
+        # Return a list of unique restaurants reviewed by this customer
+        return list(set(review.restaurant for review in self.reviews_list))
     
     def add_review(self, restaurant, rating):
+        # Add a review for a restaurant by this customer
         new_review = Review(self, restaurant, rating)
         self.reviews_list.append(new_review)
         restaurant.reviews_list.append(new_review)
 
     def num_reviews(self):
+        # Return the number of reviews by this customer
         return len(self.reviews_list)
     
     @classmethod
     def find_by_name(cls, name):
+        # Find a customer by full name
         for customer in cls.all_customers:
             if customer.full_name() == name:
                 return customer
@@ -61,25 +73,30 @@ class Customer:
     
     @classmethod
     def find_by_given_name(cls, given_name):
+        # Find customers by given name
         return [customer for customer in cls.all_customers if customer.given_name() == given_name]
 
 class Review:
     all_reviews = []
 
     def __init__(self, customer, restaurant, rating):
+        # Initialize a review with a customer, restaurant, and rating
         self.customer = customer
         self.restaurant = restaurant
         self.rating = rating
         Review.all_reviews.append(self)
 
     def restaurant_rating(self, value):
-         if isinstance (value, (int, float)):
+        # Check and return a valid restaurant rating
+        if isinstance(value, (int, float)):
             return value 
-         else:
+        else:
             return "Enter a valid number"
         
     def __str__(self):
+        # Return string representation of the review
         return f"{self.customer.full_name()}, Restaurant: {self.restaurant} -> {self.rating}"
+
 # Examples
     # Creating instances of Restaurant
 restaurant1 = Restaurant("Java food")
