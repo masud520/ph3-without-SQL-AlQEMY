@@ -80,5 +80,51 @@ class Review:
         
     def __str__(self):
         return f"{self.customer.full_name()}, Restaurant: {self.restaurant} -> {self.rating}"
-  
+# Examples
+    # Creating instances of Restaurant
+restaurant1 = Restaurant("Java food")
+restaurant2 = Restaurant("Sarena hotel")
+restaurant3 = Restaurant("Kilimanjaro palace")
+
+# Creating instances of Customer
+customer1 = Customer("Alina", "Jonte")
+customer2 = Customer("Moha", "Abdi")
+customer3 = Customer("Charli", "Mukoma")
+
+# Adding reviews for restaurants by customers
+customer1.add_review(restaurant1, 4)
+customer1.add_review(restaurant2, 5)
+customer2.add_review(restaurant2, 3)
+customer3.add_review(restaurant1, 2)
+customer3.add_review(restaurant3, 4)
+
+# Retrieving and printing information
+print(restaurant1.restaurant_name())  # Output: Java food
+
+# Get all reviews for a restaurant
+reviews_for_restaurant1 = restaurant1.reviews()
+for review in reviews_for_restaurant1:
+    print(review)  # Output: Alina jonte, Restaurant: Java food -> 4
     
+# Get unique customers who reviewed a restaurant
+customers_for_restaurant2 = restaurant2.customers()
+for customer in customers_for_restaurant2:
+    print(customer.full_name())  # Output: Alina jonte, MOha Abdi
+    
+# Get unique restaurants reviewed by a customer
+restaurants_reviewed_by_customer3 = customer3.restaurants()
+for restaurant in restaurants_reviewed_by_customer3:
+    print(restaurant.restaurant_name())  # Output: Java food, Kilimanjaro palace
+
+# Average star rating for a restaurant
+average_rating_restaurant2 = restaurant2.average_star_rating()
+print(average_rating_restaurant2)  # Output: 4.0
+
+# Find a customer by name
+found_customer = Customer.find_by_name("Moha Abdi")
+print(found_customer.full_name())  # Output: Moha Abdi
+
+# Find customers by given name
+customers_named_alice = Customer.find_by_given_name("Alina")
+for customer in customers_named_alice:
+    print(customer.full_name())  # Output: Alina Jonte
