@@ -63,3 +63,22 @@ class Customer:
     def find_by_given_name(cls, given_name):
         return [customer for customer in cls.all_customers if customer.given_name() == given_name]
 
+class Review:
+    all_reviews = []
+
+    def __init__(self, customer, restaurant, rating):
+        self.customer = customer
+        self.restaurant = restaurant
+        self.rating = rating
+        Review.all_reviews.append(self)
+
+    def restaurant_rating(self, value):
+         if isinstance (value, (int, float)):
+            return value 
+         else:
+            return "Enter a valid number"
+        
+    def __str__(self):
+        return f"{self.customer.full_name()}, Restaurant: {self.restaurant} -> {self.rating}"
+  
+    
