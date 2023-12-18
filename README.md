@@ -1,5 +1,5 @@
-# ph3-without-SQL-AlQEMY
-#**Object Relations Code Challenge-** Restaurants BY **MASUD ABDI**
+# ph3-without-SQL-AlQEMY BY MASUD ABDI
+#**Object Relations Code Challenge-** Restaurants 
 ##**Topics**
 - Classes and Instances
 - Class and Instance Methods
