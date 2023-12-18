@@ -22,3 +22,33 @@ class Restaurant:
         return average
 
 
+class Customer:
+    all_customers = []
+
+    def __init__(self, name, family_name):
+        self.name = name
+        self.family_name = family_name
+        self.reviews_list = []
+        Customer.all_customers.append(self)
+    
+    def given_name(self):
+        return self.name
+    
+    def last_name(self):
+        return self.family_name
+
+    def full_name(self):
+        return f"{self.name} {self.family_name}"
+    
+    def restaurants(self):
+        return (list(review.restaurant for review in self.reviews_list))
+    
+    def add_review(self, restaurant, rating):
+        new_review = Review(self, restaurant, rating)
+        self.reviews_list.append(new_review)
+        restaurant.reviews_list.append(new_review)
+
+    def num_reviews(self):
+        return len(self.reviews_list)
+    
+    
