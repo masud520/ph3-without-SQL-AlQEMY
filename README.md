@@ -27,8 +27,8 @@ Writing error-free code is more important than completing all of the deliverable
 Similarly, messy code that works is better than clean code that doesn't. First, prioritize getting things working. Then, if there is time at the end, refactor your code to adhere to best practices. When you encounter duplicated logic, extract it into a shared helper method.
 Before you submit! - Save and run your code to verify that it works as you expect. If you have any methods that are not working yet, feel free to leave comments describing your progress.
 
-###AUTHOR
+###**AUTHOR**
 -MASUD ABDI 
 
-###LICENCE
+###**LICENCE**
 MIT
