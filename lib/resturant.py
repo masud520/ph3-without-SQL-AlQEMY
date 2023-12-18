@@ -51,4 +51,15 @@ class Customer:
     def num_reviews(self):
         return len(self.reviews_list)
     
+    @classmethod
+    def find_by_name(cls, name):
+        for customer in cls.all_customers:
+            if customer.full_name() == name:
+                return customer
+        else:
+            return None
     
+    @classmethod
+    def find_by_given_name(cls, given_name):
+        return [customer for customer in cls.all_customers if customer.given_name() == given_name]
+
